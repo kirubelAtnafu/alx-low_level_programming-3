@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc puttin.c
+./a.out
