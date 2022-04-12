@@ -9,14 +9,8 @@
  */
 int _isalpha(int c)
 {
-	char i;
-	int isletter = 0;
-	for((i = 'a'; i <= 'z'; i++) || (i = 'A'; i <= 'Z'; i++))
-	{	
-		if(i == c)
-		{
-			isletter = 1;
-		}
-	}
-	return (isletter);
+	for((c >= 'a' && c<= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
 }
