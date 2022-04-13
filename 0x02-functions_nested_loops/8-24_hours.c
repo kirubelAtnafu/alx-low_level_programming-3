@@ -6,7 +6,7 @@
  * Description: jack_bauer function prints every minutes of the day
  * Return: nothing
  */
-int jack_bauer(void)
+void jack_bauer(void)
 {
 	int H, M;
 
