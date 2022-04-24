@@ -1,28 +1,52 @@
-include "holberton.h"
+#include "main.h"
+
 /**
- * print_number - Print an integer
- * @num: Number for printing
- *
- * Return: Nothing (void)
+ * base10 - power in 10 base
+ * @n: an exponent
+ * Return: returns 10 to power exponent
  */
-
-void print_number(int num)
+int base10(int n)
 {
-	unsigned int firstnum = 0;
+	int base = 10;
 
-	if (num % 10 < 0)
+	while (n > 0)
+	{
+		base *= 10;
+		n--;
+	}
+	return (base);
+}
+
+/**
+ * print_number - prints integers enters as parameters using putchar
+ * @n: integer to print
+ * Return: void
+ */
+void print_number(int n)
+{
+	int power;
+
+	power = base10(8);
+
+	if (n < 0)
 	{
 		_putchar('-');
-		firstnum = num * -1;
+		n *= -1;
 	}
-	else
-		firstnum = num;
 
-	if (firstnum < 10)
-		_putchar((firstnum % 10) + '0');
+	if (n == 0)
+		_putchar('0');
+
 	else
 	{
-		print_number(firstnum / 10);
-		_putchar((firstnum % 10) + '0');
+		while (n / power == 0)
+			power /= 10;
+
+		while (power >= 1)
+		{
+			_putchar((n / power) + '0');
+			n %= power;
+			power /= 10;
+		}
 	}
 }
