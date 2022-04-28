@@ -60,4 +60,5 @@ int is_palindrome(char *s)
 	{
 		return (1);
 	}
-	return (check_palindrome(s, len, i)
+	return (check_palindrome(s, len, i));
+}
