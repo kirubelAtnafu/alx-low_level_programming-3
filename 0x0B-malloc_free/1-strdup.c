@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 /**
- * _strdup - copy a string to newly allocated space in memory
+ * _strdup - copy a string to a newly allocated space in memory
  * @str: string to copy
- * Return: pointer to duplicated sting or NULL if error
+ * Return: pointer to duplicated string or NULL if error
  */
 char *_strdup(char *str)
 {
@@ -14,7 +14,7 @@ char *_strdup(char *str)
 	if (str == NULL)
 		return (NULL);
 	for (i = 0; str[i]; i++)
-		s = malloc(i * sizeof(char));
+	s = malloc(i * sizeof(char));
 	if (s == NULL)
 	{
 		return (NULL);

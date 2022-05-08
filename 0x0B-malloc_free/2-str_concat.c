@@ -5,8 +5,9 @@
  * str_concat - concatenates two strings
  * @s1: string one
  * @s2: string two
- * Return: Always 0.
+ * Return: Always 0
  */
+
 char *str_concat(char *s1, char *s2)
 {
 	unsigned int i, j, k, l;
@@ -16,15 +17,15 @@ char *str_concat(char *s1, char *s2)
 		i = 0;
 	else
 	{
-		for (i = 0; s1[i]; i++);
+	for (i = 0; s1[i]; i++)
 	}
 	if (s2 == NULL)
 		j = 0;
 	else
 	{
-		for (j = 0; s2[j]; j++);
+	for (j = 0; s2[j]; j++)
 	}
-	k = i + j;
+	k = i + j + 1;
 	s = malloc(k * sizeof(char));
 	if (s == NULL)
 		return (NULL);
