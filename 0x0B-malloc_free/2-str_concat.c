@@ -7,32 +7,46 @@
  * @s2: string two
  * Return: Always 0
  */
-
 char *str_concat(char *s1, char *s2)
 {
-	unsigned int i, j, k, l;
-	char *s;
+	char *new_str, *starts1, *starts2;
+	int i = 0, lens1 = 0, lens2 = 0;
 
+	starts1 = s1;
+	starts2 = s2;
 	if (s1 == NULL)
-		i = 0;
-	else
+		s1 = "";
+	while (*s1)
 	{
-	for (i = 0; s1[i]; i++)
+		lens1++;
+		s1++;
 	}
+	s1 = starts1;
 	if (s2 == NULL)
-		j = 0;
-	else
+		s2 = "";
+	while (*s2)
 	{
-	for (j = 0; s2[j]; j++)
+		lens2++;
+		s2++;
 	}
-	k = i + j + 1;
-	s = malloc(k * sizeof(char));
-	if (s == NULL)
+	s2 = starts2;
+	new_str = malloc(sizeof(char) * (lens1 + lens2 + 1));
+	starts1 = new_str;
+	if (new_str == NULL)
 		return (NULL);
-	for (l = 0; l < i; l++)
-		s[l] = s1[l];
-	for (l = 0; l < j; l++)
-		s[l + i] = s2[l];
-	s[i + j] = '\0';
-	return (s);
+	for (; i < (lens1 + lens2); i++)
+	{
+		if (i < lens1)
+		{
+			new_str[i] = *s1;
+			s1++;
+		}
+		else
+		{
+			new_str[i] = *s2;
+			s2++;
+		}
+	}
+	new_str[i] = '\0';
+	return (starts1);
 }
