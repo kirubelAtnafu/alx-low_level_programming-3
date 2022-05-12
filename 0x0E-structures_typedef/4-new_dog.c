@@ -1,47 +1,74 @@
+
 #include "dog.h"
 #include <stdlib.h>
 
 /**
- * new_dog - creates a new dog structure
- * @name: Dog's name
- * @age: Dog's age
- * @owner: Dog's owner
- * Return: returns a pointer to newly created dog structure
+ * _string - function holding the ptr
+ * @point: pointer holding the values
+ * Return: Always 0
  */
+char *_string(char *point)
+{
+	char *ptr;
+	int i;
+	int len = 0;
+
+	if (point == NULL)
+	{
+		return (NULL);
+	}
+	while (point[len] != '\0')
+	{
+		len++;
+	}
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; point[i] != '\0'; i++)
+	{
+		ptr[i] = point[i];
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
+/**
+ * new_dog - Funcion to create a new dog
+ * @name: initial name of dog
+ * @age: initial dog age
+ * @owner: initial dog owner
+ * Return: Always 0
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
-	char *cpyname, *cpyowner;
-	int len_name = 0, len_owner = 0, i;
+	char *dog_name, *dog_owner;
+	dog_t *dog;
 
-	if (name == NULL || owner == NULL)
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+	{
 		return (NULL);
-
-	while (name[len_name])
-		len_name++;
-	while (owner[len_owner])
-		len_owner++;
-
-	new_dog = malloc(sizeof(dog_t));
-	if (new_dog == NULL)
+	}
+	dog_name = _string(name);
+	if (dog_name == NULL)
+	{
+		free(dog);
 		return (NULL);
+	}
+	dog->name = dog_name;
 
-	cpyname = malloc(len_name + 1);
-	if (cpyname == NULL)
+	dog->age = age;
+
+	dog_owner = _string(owner);
+	if (dog_owner == NULL)
+	{
+		free(dog->name);
+		free(dog);
 		return (NULL);
-	for (i = 0; name[i]; i++)
-		cpyname[i] = name[i];
-	cpyname[i] = '\0';
-
-	cpyowner = malloc(len_owner + 1);
-	if (cpyowner == NULL)
-		return (NULL);
-	for (i = 0; owner[i]; i++)
-		cpyowner[i] = owner[i];
-	cpyowner[i] = '\0';
-
-	new_dog->name = cpyname;
-	new_dog->age = age;
-	new_dog->owner = cpyowner;
-	return (new_dog);
+	}
+	dog->owner = dog_owner;
+	return (dog);
 }
